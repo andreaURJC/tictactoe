@@ -33,6 +33,5 @@ public abstract class TicTacToe {
                 this.view.interact(controller);
             }
         } while (controller != null);
-        this.view.interact();
     }
 }
