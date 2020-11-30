@@ -1,38 +1,39 @@
 package usantatecla.tictactoe.controllers;
 
 import usantatecla.tictactoe.models.Coordinate;
+import usantatecla.tictactoe.models.Session;
 import usantatecla.tictactoe.types.Error;
 import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.models.Token;
 
 public class PlayController extends Controller {
 
-	public PlayController(Game game) {
-		super(game);
+	public PlayController(Session session) {
+		super(session);
 	}
 
 	public boolean isBoardComplete() {
-		return this.game.isBoardComplete();
+		return this.session.game.isBoardComplete();
 	}
 
 	public boolean isTicTacToe() {
-		return this.game.isTicTacToe();
+		return this.session.game.isTicTacToe();
 	}
 
 	public Token getToken() {
-		return this.game.getToken();
+		return this.session.game.getToken();
 	}
 
 	public boolean isUser() {
-		return this.game.isUser();
+		return this.session.game.isUser();
 	}
 
 	public Error put(Coordinate coordinate) {
-		return this.game.put(coordinate);
+		return this.session.game.put(coordinate);
 	}
 
 	public Error move(Coordinate origin, Coordinate target) {
-		return this.game.move(origin, target);
+		return this.session.game.move(origin, target);
 	}
 
 }
