@@ -4,21 +4,23 @@ import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.controllers.PlayController;
 import usantatecla.tictactoe.controllers.ResumeController;
 import usantatecla.tictactoe.controllers.StartController;
-import usantatecla.tictactoe.models.Game;
+import usantatecla.tictactoe.types.StateValue;
 import usantatecla.tictactoe.views.console.View;
 
 class ConsoleTicTacToe extends TicTacToe {
 
-	protected ConsoleTicTacToe() {
-		super(new Logic(new Game()));
-	}
+    protected ConsoleTicTacToe() {
+        super();
+    }
 
-	public static void main(String[] args) {
-		new ConsoleTicTacToe().play();
-	}
+    public static void main(String[] args) {
+        new ConsoleTicTacToe().play();
+    }
 
-	@Override
-	protected View createView(StartController startController, PlayController playController, ResumeController resumeController){
-		return new View(startController, playController, resumeController);
-	}
+    @Override
+    protected View createView(Logic logic) {
+        return new View((StartController) this.logic.getController(StateValue.INITIAL),
+                (PlayController) this.logic.getController(StateValue.IN_GAME),
+                (ResumeController) this.logic.getController(StateValue.RESUME));
+    }
 }

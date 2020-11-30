@@ -23,4 +23,8 @@ public class Logic {
     public Controller getController() {
         return this.controllers.get(this.session.getStateValue());
     }
+
+    public Controller getController(StateValue stateValue) {
+        return this.controllers.get(stateValue);
+    }
 }
