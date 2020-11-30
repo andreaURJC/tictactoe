@@ -14,7 +14,8 @@ public abstract class TicTacToe {
     private View view;
     private Logic logic;
 
-    protected TicTacToe() {
+    protected TicTacToe(Logic logic) {
+        this.logic = new Logic();
         this.game = new Game();
         this.startController = new StartController(this.game);
         this.playController = new PlayController(this.game);
@@ -25,7 +26,13 @@ public abstract class TicTacToe {
     protected abstract View createView(StartController startController, PlayController playController, ResumeController resumeController2);
 
     protected void play() {
-        Controller controller = this.logic.getController();
-//        this.view.interact();
+        Controller controller;
+        do {
+            controller = this.logic.getController();
+            if (controller != null) {
+                this.view.interact();
+            }
+        } while (controller != null);
+        this.view.interact();
     }
 }
