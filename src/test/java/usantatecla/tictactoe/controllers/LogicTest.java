@@ -45,4 +45,11 @@ public class LogicTest {
 
         assertThat(this.logic.getController(), is(instanceOf(PlayController.class)));
     }
+
+    @Test
+    public void testGetControllerWhenStateValueIsResumeShouldReturnResumeController() {
+        Mockito.when(this.session.getStateValue()).thenReturn(StateValue.RESUME);
+
+        assertThat(this.logic.getController(), is(instanceOf(ResumeController.class)));
+    }
 }
