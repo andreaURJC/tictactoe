@@ -33,9 +33,16 @@ public class LogicTest {
     private ControllerFactory controllerFactory = new ControllerFactory();
 
     @Test
-    public void testGetControllerAtSessionState() {
+    public void testGetControllerWhenStateValueIsInitialShouldReturnStartController() {
         Mockito.when(this.session.getStateValue()).thenReturn(StateValue.INITIAL);
 
         assertThat(this.logic.getController(), is(instanceOf(StartController.class)));
+    }
+
+    @Test
+    public void testGetControllerWhenStateValueIsInGameShouldReturnPlayController() {
+        Mockito.when(this.session.getStateValue()).thenReturn(StateValue.IN_GAME);
+
+        assertThat(this.logic.getController(), is(instanceOf(PlayController.class)));
     }
 }
