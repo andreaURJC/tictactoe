@@ -7,17 +7,21 @@ import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
+import org.mockito.MockitoAnnotations;
 import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 import usantatecla.tictactoe.models.Session;
 import usantatecla.tictactoe.objectfactory.ControllerFactory;
 import usantatecla.tictactoe.types.StateValue;
 
 import java.util.Map;
 
-import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.*;
 import static org.junit.Assert.*;
 
 @ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.LENIENT)
 public class LogicTest {
 
     @InjectMocks
@@ -26,19 +30,12 @@ public class LogicTest {
     @Mock
     private Session session;
 
-    @Mock
-    private Map<StateValue,Controller> controllers;
-
     private ControllerFactory controllerFactory = new ControllerFactory();
-
-//    @Before
-//    public void before() {
-//
-//    }
 
     @Test
     public void testGetControllerAtSessionState() {
         Mockito.when(this.session.getStateValue()).thenReturn(StateValue.INITIAL);
-        assertThat(this.logic.getController(), is(controllerFactory.getStartController()));
+
+        assertThat(this.logic.getController(), is(instanceOf(StartController.class)));
     }
 }
