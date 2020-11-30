@@ -6,6 +6,8 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import usantatecla.tictactoe.controllers.Controller;
 import usantatecla.tictactoe.controllers.PlayController;
+import usantatecla.tictactoe.controllers.ResumeController;
+import usantatecla.tictactoe.controllers.StartController;
 import usantatecla.tictactoe.objectfactory.ControllerFactory;
 
 import static org.junit.Assert.*;
@@ -35,7 +37,7 @@ public class ViewTest {
 
     @Test
     public void viewInteractWithStartControllerShouldInteractWithStartView() {
-        Controller startController = this.controllerFactory.getStartController();
+        StartController startController = this.controllerFactory.getStartController();
         this.view.interact(startController);
         verify(this.view, times(1)).visit(startController);
     }
@@ -45,6 +47,13 @@ public class ViewTest {
         PlayController playController = this.controllerFactory.getPlayController();
         this.view.interact(playController);
         verify(this.view, times(1)).visit(playController);
+    }
+
+    @Test
+    public void viewInteractWithResumeControllerControllerShouldInteractWithResumeView() {
+        ResumeController resumeController = this.controllerFactory.getResumeController();
+        this.view.interact(resumeController);
+        verify(this.view, times(1)).visit(resumeController);
     }
 
 }
