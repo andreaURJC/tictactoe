@@ -5,9 +5,12 @@ import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import usantatecla.tictactoe.controllers.Controller;
+import usantatecla.tictactoe.controllers.PlayController;
 import usantatecla.tictactoe.objectfactory.ControllerFactory;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 
 public class ViewTest {
 
@@ -34,6 +37,14 @@ public class ViewTest {
     public void viewInteractWithStartControllerShouldInteractWithStartView() {
         Controller startController = this.controllerFactory.getStartController();
         this.view.interact(startController);
+        verify(this.view, times(1)).visit(startController);
+    }
+
+    @Test
+    public void viewInteractWithPlayControllerControllerShouldInteractWithPlayView() {
+        PlayController playController = this.controllerFactory.getPlayController();
+        this.view.interact(playController);
+        verify(this.view, times(1)).visit(playController);
     }
 
 }
