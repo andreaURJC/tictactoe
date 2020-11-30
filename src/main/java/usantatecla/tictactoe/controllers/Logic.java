@@ -17,6 +17,7 @@ public class Logic {
         this.controllers.put(StateValue.INITIAL, new StartController(game));
         this.controllers.put(StateValue.IN_GAME, new PlayController(game));
         this.controllers.put(StateValue.RESUME, new ResumeController(game));
+        this.controllers.put(StateValue.EXIT, null);
     }
 
     public Controller getController() {
