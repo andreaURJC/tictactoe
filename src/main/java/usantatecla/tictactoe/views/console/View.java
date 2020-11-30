@@ -1,5 +1,6 @@
 package usantatecla.tictactoe.views.console;
 
+import jdk.javadoc.internal.tool.Start;
 import usantatecla.tictactoe.controllers.*;
 
 public class View extends usantatecla.tictactoe.views.View implements ControllerVisitor {
@@ -15,22 +16,13 @@ public class View extends usantatecla.tictactoe.views.View implements Controller
     }
 
     public void interact(Controller controller) {
-
-    }
-
-    @Override
-    protected void start() {
-        this.startView.interact();
-    }
-
-    @Override
-    protected void play() {
-        this.playView.interact();
-    }
-
-    @Override
-    protected boolean isResumed() {
-        return this.resumeView.interact();
+        if(controller instanceof StartController) {
+            this.visit((StartController) controller);
+        } else if(controller instanceof PlayController) {
+            this.visit((PlayController) controller);
+        } else if(controller instanceof ResumeController){
+            this.visit((ResumeController) controller);
+        }
     }
 
     @Override
