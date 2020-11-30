@@ -52,4 +52,11 @@ public class LogicTest {
 
         assertThat(this.logic.getController(), is(instanceOf(ResumeController.class)));
     }
+
+    @Test
+    public void testGetControllerWhenStateValueIsExitShouldReturnNull() {
+        Mockito.when(this.session.getStateValue()).thenReturn(StateValue.EXIT);
+
+        assertThat(this.logic.getController(), is(nullValue()));
+    }
 }
