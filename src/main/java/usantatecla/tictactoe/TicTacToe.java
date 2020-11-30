@@ -6,6 +6,7 @@ import usantatecla.tictactoe.controllers.StartController;
 import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.views.console.View;
 
+
 public abstract class TicTacToe {
 
     private Game game;
