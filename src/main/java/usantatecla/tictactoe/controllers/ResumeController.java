@@ -9,7 +9,7 @@ public class ResumeController extends Controller {
   }
 
   public void resume() {
-    this.session.game.reset();
+    this.session.resume();
   }
 
   @Override

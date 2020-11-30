@@ -9,11 +9,11 @@ public class StartController extends Controller {
   }
 
   public void setUsers(int users) {
-    this.session.game.setUsers(users);
+    this.session.setUsers(users);
   }
 
   public int getMaxPlayers() {
-	return this.session.game.getMaxPlayers();
+	return this.session.getMaxPlayers();
 }
 
   @Override

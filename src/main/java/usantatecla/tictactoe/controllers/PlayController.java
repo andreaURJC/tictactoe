@@ -18,27 +18,27 @@ public class PlayController extends Controller {
 	}
 
 	public boolean isBoardComplete() {
-		return this.session.game.isBoardComplete();
+		return this.session.isBoardComplete();
 	}
 
 	public boolean isTicTacToe() {
-		return this.session.game.isTicTacToe();
+		return this.session.isTicTacToe();
 	}
 
 	public Token getToken() {
-		return this.session.game.getToken();
+		return this.session.getToken();
 	}
 
 	public boolean isUser() {
-		return this.session.game.isUser();
+		return this.session.isUser();
 	}
 
 	public Error put(Coordinate coordinate) {
-		return this.session.game.put(coordinate);
+		return this.session.put(coordinate);
 	}
 
 	public Error move(Coordinate origin, Coordinate target) {
-		return this.session.game.move(origin, target);
+		return this.session.move(origin, target);
 	}
 
 }

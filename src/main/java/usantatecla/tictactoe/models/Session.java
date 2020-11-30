@@ -1,10 +1,11 @@
 package usantatecla.tictactoe.models;
 
+import usantatecla.tictactoe.types.Error;
 import usantatecla.tictactoe.types.StateValue;
 
 public class Session {
     private State state;
-    public Game game;
+    private Game game;
 
     public Session() {
         this.state = new State();
@@ -19,7 +20,40 @@ public class Session {
         return this.game.getToken(coordinate);
     }
 
-    public Game getGame() {
-        return this.game;
+    public boolean isBoardComplete() {
+        return this.game.isBoardComplete();
     }
+
+    public boolean isTicTacToe() {
+        return this.game.isTicTacToe();
+    }
+
+    public Token getToken() {
+        return this.game.getToken();
+    }
+
+    public boolean isUser() {
+        return this.game.isUser();
+    }
+
+    public Error put(Coordinate coordinate) {
+        return this.game.put(coordinate);
+    }
+
+    public Error move(Coordinate origin, Coordinate target) {
+        return this.game.move(origin, target);
+    }
+
+    public void resume() {
+        this.game.reset();
+    }
+
+    public void setUsers(int users) {
+        this.game.setUsers(users);
+    }
+
+    public int getMaxPlayers() {
+        return this.game.getMaxPlayers();
+    }
+
 }
