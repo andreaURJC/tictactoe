@@ -12,4 +12,8 @@ public class ResumeController extends Controller {
     this.session.game.reset();
   }
 
+  @Override
+  public void accept(ControllerVisitor controller) {
+    controller.visit(this);
+  }
 }

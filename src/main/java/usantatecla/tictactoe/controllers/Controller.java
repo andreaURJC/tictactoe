@@ -16,5 +16,7 @@ public abstract class Controller {
 	public Token getToken(Coordinate coordinate) {
 		return this.session.getToken(coordinate);
 	}
+
+	public abstract void accept(ControllerVisitor controller);
   
 }

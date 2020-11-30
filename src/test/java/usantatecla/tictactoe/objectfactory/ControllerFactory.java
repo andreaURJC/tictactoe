@@ -3,21 +3,21 @@ package usantatecla.tictactoe.objectfactory;
 import usantatecla.tictactoe.controllers.PlayController;
 import usantatecla.tictactoe.controllers.ResumeController;
 import usantatecla.tictactoe.controllers.StartController;
-import usantatecla.tictactoe.models.Game;
+import usantatecla.tictactoe.models.Session;
 
 public class ControllerFactory {
 
-    private Game game = new Game();
+    private Session session = new Session();
 
     public PlayController getPlayController() {
-        return new PlayController(this.game);
+        return new PlayController(session);
     }
 
     public ResumeController getResumeController() {
-        return new ResumeController(this.game);
+        return new ResumeController(session);
     }
 
     public StartController getStartController() {
-        return new StartController(this.game);
+        return new StartController(session);
     }
 }

@@ -1,6 +1,5 @@
 package usantatecla.tictactoe.controllers;
 
-import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.models.Session;
 
 public class StartController extends Controller {
@@ -17,4 +16,8 @@ public class StartController extends Controller {
 	return this.session.game.getMaxPlayers();
 }
 
+  @Override
+  public void accept(ControllerVisitor controller) {
+    controller.visit(this);
+  }
 }

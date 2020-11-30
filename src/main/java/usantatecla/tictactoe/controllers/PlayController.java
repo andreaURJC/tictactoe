@@ -12,6 +12,11 @@ public class PlayController extends Controller {
 		super(session);
 	}
 
+	@Override
+	public void accept(ControllerVisitor controller) {
+		controller.visit(this);
+	}
+
 	public boolean isBoardComplete() {
 		return this.session.game.isBoardComplete();
 	}

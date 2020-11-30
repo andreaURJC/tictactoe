@@ -4,6 +4,5 @@ import usantatecla.tictactoe.controllers.Controller;
 
 public abstract class View {
 
-    public void interact(Controller controller) {
-    }
+    public abstract void interact(Controller controller) ;
 }
