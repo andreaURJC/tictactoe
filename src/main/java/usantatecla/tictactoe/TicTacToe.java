@@ -1,8 +1,6 @@
 package usantatecla.tictactoe;
 
-import usantatecla.tictactoe.controllers.PlayController;
-import usantatecla.tictactoe.controllers.ResumeController;
-import usantatecla.tictactoe.controllers.StartController;
+import usantatecla.tictactoe.controllers.*;
 import usantatecla.tictactoe.models.Game;
 import usantatecla.tictactoe.views.console.View;
 
@@ -14,6 +12,7 @@ public abstract class TicTacToe {
     private PlayController playController;
     private ResumeController resumeController;
     private View view;
+    private Logic logic;
 
     protected TicTacToe() {
         this.game = new Game();
@@ -26,6 +25,7 @@ public abstract class TicTacToe {
     protected abstract View createView(StartController startController, PlayController playController, ResumeController resumeController2);
 
     protected void play() {
-        this.view.interact();
+        Controller controller = this.logic.getController();
+//        this.view.interact();
     }
 }
