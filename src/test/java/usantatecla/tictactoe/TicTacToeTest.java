@@ -30,8 +30,8 @@ class TicTacToeTest {
 
     }
     @Test
-    public void testPlayShouldGetcontrollerFromLogicAndInteractWithTheView() {
+    public void testPlayShouldGetControllerFromLogicAndInteractWithTheView() {
+        this.ticTacToe.play();
         verify(this.logic.getController(), times(1));
-
     }
 }
