@@ -2,8 +2,11 @@ package usantatecla.tictactoe;
 
 import org.junit.Before;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.mockito.junit.jupiter.MockitoExtension;
 import usantatecla.tictactoe.controllers.Controller;
 import usantatecla.tictactoe.controllers.Logic;
 import usantatecla.tictactoe.objectfactory.ControllerFactory;
@@ -11,10 +14,13 @@ import usantatecla.tictactoe.views.console.View;
 
 import static org.mockito.Mockito.*;
 
+@ExtendWith(MockitoExtension.class)
 public class ConsoleTicTacToeTest {
+
+    @InjectMocks
     private ConsoleTicTacToe ticTacToe;
 
-    private ControllerFactory controllerFactory;
+    private ControllerFactory controllerFactory = new ControllerFactory();
 
     @Mock
     private Logic logic;
@@ -25,37 +31,28 @@ public class ConsoleTicTacToeTest {
     @Before
     public void before() {
         MockitoAnnotations.openMocks(this);
-        this.ticTacToe = new ConsoleTicTacToe(logic);
-        this.controllerFactory = new ControllerFactory();
     }
 
     @Test
     public void testPlayShouldGetControllerFromLogicAndInteractWithTheView() {
+        when(this.logic.getController()).thenReturn(startController(), null);
         this.ticTacToe.play();
-        when(this.logic.getController()).thenReturn(startController());
 
-        verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact(any());
+        verify(this.logic, times(2)).getController();
+        verify(this.view, times(1)).interact(any());
     }
 
     @Test
     public void testPlayShouldGetControllerFromLogicAndInteractWithTheViewUntilControllerIsNull() {
+        when(this.logic.getController()).thenReturn(startController(), playController(), resumeController(), null);
         this.ticTacToe.play();
-        when(this.logic.getController()).thenReturn(startController());
 
-        verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact(any());
+        verify(this.logic, times(4)).getController();
+        verify(this.view, times(3)).interact(any());
+    }
 
-        when(this.logic.getController()).thenReturn(playController());
-
-        verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact(any());
-
-        when(this.logic.getController()).thenReturn(null);
-        verify(this.logic, times(1)).getController();
-        verify(this.view,times(0)).interact(any());
-
-        verifyNoInteractions(this.logic, this.view);
+    private Controller resumeController() {
+        return this.controllerFactory.getResumeController();
     }
 
     private Controller playController() {

@@ -15,13 +15,15 @@ public abstract class TicTacToe {
     private Logic logic;
 
     protected TicTacToe(Logic logic) {
-        this.logic = new Logic();
+        this.logic = logic;
         this.game = new Game();
         this.startController = new StartController(this.game);
         this.playController = new PlayController(this.game);
         this.resumeController = new ResumeController(this.game);
         this.view = this.createView(this.startController, this.playController, this.resumeController);
     }
+
+    protected TicTacToe() {}
 
     protected abstract View createView(StartController startController, PlayController playController, ResumeController resumeController2);
 
