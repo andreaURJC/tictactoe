@@ -1,15 +1,15 @@
 package usantatecla.tictactoe.controllers;
 
-import usantatecla.tictactoe.models.Game;
+import usantatecla.tictactoe.models.Session;
 
 public class ResumeController extends Controller {
 
-  public ResumeController(Game game) {
-    super(game);
+  public ResumeController(Session session) {
+    super(session);
   }
 
   public void resume() {
-    this.game.reset();
+    this.session.game.reset();
   }
 
 }
