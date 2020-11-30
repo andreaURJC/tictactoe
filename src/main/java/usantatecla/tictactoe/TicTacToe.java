@@ -30,7 +30,7 @@ public abstract class TicTacToe {
         do {
             controller = this.logic.getController();
             if (controller != null) {
-                this.view.interact();
+                this.view.interact(controller);
             }
         } while (controller != null);
         this.view.interact();

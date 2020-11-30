@@ -1,5 +1,6 @@
 package usantatecla.tictactoe.views.console;
 
+import usantatecla.tictactoe.controllers.Controller;
 import usantatecla.tictactoe.controllers.PlayController;
 import usantatecla.tictactoe.controllers.ResumeController;
 import usantatecla.tictactoe.controllers.StartController;
@@ -15,6 +16,8 @@ public class View extends usantatecla.tictactoe.views.View {
 		this.playView = new PlayView(playController);
 		this.resumeView = new ResumeView(resumeController);
 	}
+
+	public void interact(Controller controller) {}
 
 	@Override
 	protected void start(){

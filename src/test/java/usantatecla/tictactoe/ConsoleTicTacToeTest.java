@@ -15,6 +15,7 @@ public class ConsoleTicTacToeTest {
     private ConsoleTicTacToe ticTacToe;
 
     private ControllerFactory controllerFactory;
+
     @Mock
     private Logic logic;
 
@@ -34,7 +35,7 @@ public class ConsoleTicTacToeTest {
         when(this.logic.getController()).thenReturn(startController());
 
         verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact();
+        verify(this.view,times(1)).interact(any());
     }
 
     @Test
@@ -43,16 +44,16 @@ public class ConsoleTicTacToeTest {
         when(this.logic.getController()).thenReturn(startController());
 
         verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact();
+        verify(this.view,times(1)).interact(any());
 
         when(this.logic.getController()).thenReturn(playController());
 
         verify(this.logic, times(1)).getController();
-        verify(this.view,times(1)).interact();
+        verify(this.view,times(1)).interact(any());
 
         when(this.logic.getController()).thenReturn(null);
         verify(this.logic, times(1)).getController();
-        verify(this.view,times(0)).interact();
+        verify(this.view,times(0)).interact(any());
 
         verifyNoInteractions(this.logic, this.view);
     }
