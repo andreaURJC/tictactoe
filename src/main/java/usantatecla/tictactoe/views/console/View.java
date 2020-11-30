@@ -30,4 +30,17 @@ public class View extends usantatecla.tictactoe.views.View {
 	protected boolean isResumed(){
 		return this.resumeView.interact();
 	}
+
+	public void visit(StartController startController) {
+		this.startView.interact();
+	}
+
+	public void visit(PlayController playController) {
+		this.playView.interact();
+	}
+
+	public void visit(ResumeController resumeController) {
+		this.resumeView.interact();
+	}
+
 }
