@@ -38,7 +38,7 @@ public class LogicTest {
 
     @Test
     public void testGetControllerAtSessionState() {
-        
+        Mockito.when(this.session.getStateValue()).thenReturn(StateValue.INITIAL);
         assertThat(this.logic.getController(), is(controllerFactory.getStartController()));
     }
 }
